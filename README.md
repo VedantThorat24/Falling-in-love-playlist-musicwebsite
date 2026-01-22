@@ -1,5 +1,7 @@
 # 🎧 Falling in Love – Music Playlist
 
+![Preview](./images/Preview.png)
+
 A minimal, interactive music playlist website built using **HTML, CSS, and Vanilla JavaScript**.  
 The project focuses on clean UI, smooth interactions, and a simple idea:
 
