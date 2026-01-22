@@ -1,0 +1,193 @@
+:root {
+    --lightBlue: #8dc6d7;
+    --red: #fb0201;
+    --darkBlue: #233438;
+    --lightYellow: #fae3be;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: bebas neue;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+body[theme="red"] {
+    background-color: var(--lightYellow);
+    color: var(--red);
+
+    .button {
+        background-color: var(--lightYellow);
+    }
+}
+
+body[theme="red"]::selection {
+    background-color: var(--red);
+    color: var(--lightYellow);
+}
+body[theme="blue"]::selection {
+    background-color: var(--lightBlue);
+    color: var(--darkBlue);
+}
+
+body[theme="blue"] {
+    background-color: var(--darkBlue);
+    color: var(--lightBlue);
+     .button {
+        background-color: var(--darkBlue);
+    }
+}
+
+.main {
+    height: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.vibe{
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+}
+.vibe i{
+ font-size: 2rem;
+}
+h1 {
+    font-size: 6rem;
+    letter-spacing: 1rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    width: 90vw;
+    /* height: 60vh; */
+    /* background-color: palevioletred; */
+}
+
+.songList {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw;
+    /* border-width: 2px 2px 0 2px; */
+    /* border-style: solid; */
+    border: 2px solid;
+    border-bottom: 0;
+    position: relative;
+}
+
+.songList:nth-child(4) {
+    border-bottom: 2px solid;
+}
+
+.songList h3 {
+    font-size: 3rem;
+}
+
+.songList .image {
+    opacity: 0;
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    left: 10%;
+    /* background-color: aqua; */
+    border: 2px solid;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    z-index: 3;
+}
+
+.songText h2 {
+    font-size: 2rem;
+}
+
+.songText h4 {
+    font-size: 1rem;
+    font-family: satoshi;
+    text-transform: uppercase;
+}
+
+.image .cover {
+    width: 100%;
+    height: 80%;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image .button {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid;
+}
+
+.button .pause i {
+    font-size: 2rem;
+    cursor: pointer;
+
+}
+
+
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+}
+@media (max-width:600px) {
+    .vibe{
+        right: 1rem;
+        top: 1rem;
+        font-size: 3rem;
+    }
+    h1{
+        width: 90%;
+        font-size: 3rem;
+        text-align: left;
+         letter-spacing: 0;
+        margin-bottom: 4rem;
+    }
+    .main{
+        padding-left: .3rem;
+    }
+    .songList{
+        padding: .6rem;
+    }
+    .songList h3 {
+    font-size: 1rem;
+}
+.songList .image {
+    width: 8rem;
+    height: 8rem;
+    left: 8%;
+}
+.songText h2 {
+    font-size: 1.4rem;
+}
+.songText h4 {
+    font-size: .7rem;
+}
+.button .pause i {
+    font-size: 1rem;
+}
+.left{
+    width: calc(100% - 10rem);
+}
+}
