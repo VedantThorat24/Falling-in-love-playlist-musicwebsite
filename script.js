@@ -34,7 +34,7 @@ var clutter = ""
 var container = document.querySelector(".container")
 songListArr.forEach(function (songListArr, idx) {
     clutter += `<div id="${idx}" class="songList">
-                <h3>${idx + 1}</h3>
+                <h3 class="magnet">${idx + 1}</h3>
                 <div class="image">
                     <div class="cover">
                         <img src="${songListArr.image}" alt="">
@@ -47,7 +47,7 @@ songListArr.forEach(function (songListArr, idx) {
                 </div>
                 <div class="left">
                     <div class="songText">
-                        <h2>${songListArr.title}</h2>
+                        <h2 class="magnet">${songListArr.title}</h2>
                         <h4>${songListArr.desc}</h4>
                     </div>
                     <h3>${songListArr.time}</h3>
@@ -70,6 +70,7 @@ container.addEventListener("click", function (details) {
     currentImage.style.opacity = "1";
     currentImage.style.zIndex = "4";
 
+
     selectedSong = songCard.id
     audio.src = songListArr[selectedSong].url
     audio.play()
@@ -83,12 +84,12 @@ document.querySelectorAll(".image").forEach(image => {
 
 var pause = document.querySelectorAll(".button .pause")
 pause.forEach(function (btn) {
-    btn.addEventListener("click", function() {
-        if (audio.paused){
+    btn.addEventListener("click", function () {
+        if (audio.paused) {
             audio.play();
             btn.innerHTML = ` <i class="ri-album-fill"></i>`
 
-        }else{
+        } else {
             btn.innerHTML = `<i class="ri-pause-circle-fill"></i>`
             audio.pause();
 
@@ -120,3 +121,81 @@ vibe.addEventListener("click", function () {
         vibe.innerHTML = `<i class="ri-moon-fill"></i>`;
     }
 });
+
+
+
+
+// let songListAll = document.querySelectorAll(".songList")
+// songListAll.forEach(function (list) {
+//     var perimg = list.querySelector(".image")
+//     perimg.addEventListener("mousemove", function (dets) {
+//         var width = list.getBoundingClientRect()
+//         var start = dets.clientX - width.left
+//         var range = gsap.utils.mapRange(0, width.width, 30, width.width / 2 , start)
+//         gsap.to(perimg, {
+//             x: range + "px",
+//             duration: 0.2,
+//             ease: "power2.out"
+//         })
+//     })
+//     perimg.addEventListener("mouseleave", function () {
+//         gsap.to(perimg, {
+//             x: 0,
+//             duration: 1,
+//             ease: "power2.out"
+//         })
+//     })
+// })
+
+var cursor = document.querySelector(".cursor")
+window.addEventListener("mousemove", function (dets) {
+    gsap.to(cursor, {
+        x: dets.x,
+        y: dets.y,
+        duration: 1,
+        ease: "elastic.out(1,1)",
+
+    })
+})
+
+document.querySelectorAll(".magnet").forEach(function (el) {
+    el.addEventListener("mouseenter", function () {
+        gsap.to(cursor, {
+            scale: 4,
+            duration: 0.3,
+            ease: "power3.out"
+        })
+    })
+
+    el.addEventListener("mouseleave", function () {
+        gsap.to(cursor, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power3.out"
+        })
+    })
+})
+document.querySelectorAll(".magnet").forEach(el => {
+    el.addEventListener("mousemove", (e) => {
+        const rect = el.getBoundingClientRect()
+
+        const x = e.clientX - (rect.left + rect.width / 2)
+        const y = e.clientY - (rect.top + rect.height / 2)
+
+        gsap.to(el, {
+            x: x * 1,
+            y: y * 1,
+            duration: 0.3,
+            ease: "power2.out"
+        })
+    })
+
+    el.addEventListener("mouseleave", () => {
+        gsap.to(el, {
+            x: 0,
+            y: 0,
+            duration: 0.4,
+            ease: "power3.out"
+        })
+    })
+})

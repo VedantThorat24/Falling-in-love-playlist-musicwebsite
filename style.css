@@ -26,12 +26,21 @@ body[theme="red"] {
     .button {
         background-color: var(--lightYellow);
     }
+
+    .cursor {
+        background-color: var(--red);
+    }
+
+    .magnet:hover {
+        color: var(--lightYellow);
+    }
 }
 
 body[theme="red"]::selection {
     background-color: var(--red);
     color: var(--lightYellow);
 }
+
 body[theme="blue"]::selection {
     background-color: var(--lightBlue);
     color: var(--darkBlue);
@@ -40,9 +49,31 @@ body[theme="blue"]::selection {
 body[theme="blue"] {
     background-color: var(--darkBlue);
     color: var(--lightBlue);
-     .button {
+
+    .button {
         background-color: var(--darkBlue);
     }
+}
+
+.cursor {
+    height: 22px;
+    width: 22px;
+    background-color: var(--lightBlue);
+    border-radius: 50%;
+    position: fixed;
+    /* mix-blend-mode: difference; */
+    z-index: 6;
+    pointer-events: none;
+
+
+}
+
+.magnet {
+    transition: color 0.3s ease;
+}
+
+.magnet:hover {
+    color: var(--darkBlue);
 }
 
 .main {
@@ -53,14 +84,18 @@ body[theme="blue"] {
     flex-direction: column;
     justify-content: center;
 }
-.vibe{
+
+.vibe {
     position: absolute;
     top: 3rem;
     right: 3rem;
+    z-index: 8;
 }
-.vibe i{
- font-size: 2rem;
+
+.vibe i {
+    font-size: 2rem;
 }
+
 h1 {
     font-size: 6rem;
     letter-spacing: 1rem;
@@ -92,6 +127,8 @@ h1 {
 
 .songList h3 {
     font-size: 3rem;
+    z-index: 8;
+    position: relative;
 }
 
 .songList .image {
@@ -110,6 +147,8 @@ h1 {
 
 .songText h2 {
     font-size: 2rem;
+    z-index: 8;
+    position: relative;
 }
 
 .songText h4 {
@@ -136,6 +175,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-top: 2px solid;
+
 }
 
 .button .pause i {
@@ -144,6 +184,10 @@ h1 {
 
 }
 
+.button .pause {
+    position: relative;
+    z-index: 12;
+}
 
 .left {
     display: flex;
@@ -151,43 +195,57 @@ h1 {
     justify-content: space-between;
     width: 30%;
 }
+
 @media (max-width:600px) {
-    .vibe{
+    .vibe {
         right: 1rem;
         top: 1rem;
         font-size: 3rem;
     }
-    h1{
+
+    .cursor {
+        display: none;
+    }
+
+    h1 {
         width: 90%;
         font-size: 3rem;
         text-align: left;
-         letter-spacing: 0;
+        letter-spacing: 0;
         margin-bottom: 4rem;
     }
-    .main{
+
+    .main {
         padding-left: .3rem;
     }
-    .songList{
+
+    .songList {
         padding: .6rem;
     }
+
     .songList h3 {
-    font-size: 1rem;
-}
-.songList .image {
-    width: 8rem;
-    height: 8rem;
-    left: 8%;
-}
-.songText h2 {
-    font-size: 1.4rem;
-}
-.songText h4 {
-    font-size: .7rem;
-}
-.button .pause i {
-    font-size: 1rem;
-}
-.left{
-    width: calc(100% - 10rem);
-}
+        font-size: 1rem;
+    }
+
+    .songList .image {
+        width: 8rem;
+        height: 8rem;
+        left: 8%;
+    }
+
+    .songText h2 {
+        font-size: 1.4rem;
+    }
+
+    .songText h4 {
+        font-size: .7rem;
+    }
+
+    .button .pause i {
+        font-size: 1rem;
+    }
+
+    .left {
+        width: calc(100% - 10rem);
+    }
 }
